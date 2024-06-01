@@ -40,14 +40,14 @@ const Banner = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper h-[80vh] "
+        className="mySwiper h-[80vh] lg:h-[calc(100vh-80px)]"
       >
         <SwiperSlide className="relative">
           <div
             style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${bgImage1})`,
             }}
-            className=" flex flex-col items-center justify-center w-full h-full text-white  bg-cover bg-center -z-10 rounded-3xl p-4 md:p-10"
+            className=" flex flex-col items-center justify-center w-full h-full text-white  bg-cover bg-center -z-10 rounded-sm p-4 md:p-10"
           >
             <h2
               data-aos="fade-right"
@@ -82,7 +82,7 @@ const Banner = () => {
             style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${bgImage2})`,
             }}
-            className=" flex flex-col items-center justify-center w-full h-full text-white  bg-cover bg-center rounded-3xl"
+            className=" flex flex-col items-center justify-center w-full h-full text-white  bg-cover bg-center rounded-sm"
           >
             <h2 className="text-4xl md:text-5xl font-bold md:w-[600px] text-center leading-10 md:leading-[70px]">
               Achieve Your <span className="text-yellow">Dream</span> with Ease
@@ -102,7 +102,7 @@ const Banner = () => {
             style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${bgImage3})`,
             }}
-            className=" flex flex-col items-center justify-center w-full h-full text-white  bg-cover bg-center rounded-3xl"
+            className=" flex flex-col items-center justify-center w-full h-full text-white  bg-cover bg-center rounded-sm"
           >
             <h2 className="text-4xl md:text-5xl font-bold md:w-[600px] text-center leading-10 md:leading-[70px] px-2">
               Start Your Journey to <span className="text-yellow">Excellence</span>
