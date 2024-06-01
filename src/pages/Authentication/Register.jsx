@@ -66,7 +66,7 @@ const Register = () => {
       await updateUserProfile(displayName, image_url);
       setUser({ ...result?.user, photoURL: image_url, displayName: displayName });
 
-      const userInfo = { displayName, email,image_url, role : 'user' };
+      const userInfo = { displayName, email, password,image_url, role : 'user' };
       const { data } = await axiosPublic.put("/users", userInfo);
       console.log(data);
       // if (data.insertedId > 0) {
@@ -76,29 +76,16 @@ const Register = () => {
       navigate(from, { replace: true });
       toast.success("Sign Up Successful");
       setLoading(false)
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        `${error.message
+          .replace("Firebase: Error (auth/", " ")
+          .replace(/\)/, "")
+          .replace(/-/g, " ")}`
+      );
       setLoading(false)
     }
-
-
-
-    // createUser(email, password)
-    //   .then(() => {
-    //     updateUserProfile(displayName, image).then(() => {
-    //       navigate("/");
-    //       return toast.success("Sign up successful");
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     return toast.error(
-    //       `${error.message
-    //         .replace("Firebase: Error (auth/", " ")
-    //         .replace(/\)/, "")
-    //         .replace(/-/g, " ")}`
-    //     );
-    //   });
   };
 
   
