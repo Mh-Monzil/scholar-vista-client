@@ -1,0 +1,92 @@
+[
+    {
+        "universityName": "Harvard University",
+        "universityImage": "https://i.ibb.co/FJDTmTy/harvard.jpg",
+        "scholarshipCategory": "Merit-based",
+        "universityLocation": "Cambridge, USA",
+        "applicationDeadline": "2024-12-15",
+        "subjectCategory": "Business",
+        "applicationFees": "$75",
+        "rating": 0
+    },
+    {
+        "universityName": "University of Oxford",
+        "universityImage": "https://i.ibb.co/QCdbTh8/oxford.jpg",
+        "scholarshipCategory": "Need-based",
+        "universityLocation": "Oxford, UK",
+        "applicationDeadline": "2024-10-01",
+        "subjectCategory": "Humanities",
+        "applicationFees": "£60",
+        "rating": 0
+    },
+    {
+        "universityName": "Stanford University",
+        "universityImage": "https://i.ibb.co/68StWsb/toronto.jpg",
+        "scholarshipCategory": "Athletic",
+        "universityLocation": "Stanford, USA",
+        "applicationDeadline": "2024-11-01",
+        "subjectCategory": "Engineering",
+        "applicationFees": "$90",
+        "rating": 0
+    },
+    {
+        "universityName": "University of Toronto",
+        "universityImage": "https://i.ibb.co/fkhcXM7/australian.jpg",
+        "scholarshipCategory": "International",
+        "universityLocation": "Toronto, Canada",
+        "applicationDeadline": "2025-01-15",
+        "subjectCategory": "Sciences",
+        "applicationFees": "CAD 100",
+        "rating": 0
+    },
+    {
+        "universityName": "Australian National University",
+        "universityImage": "https://i.ibb.co/nrqm60V/uni1.png",
+        "scholarshipCategory": "Research",
+        "universityLocation": "Canberra, Australia",
+        "applicationDeadline": "2024-09-30",
+        "subjectCategory": "Law",
+        "applicationFees": "AUD 120",
+        "rating": 0
+    },
+    {
+        "universityName": "National University of Singapore",
+        "universityImage": "https://i.ibb.co/bXpDYCP/uni2.png",
+        "scholarshipCategory": "Merit-based",
+        "universityLocation": "Singapore, Singapore",
+        "applicationDeadline": "2024-12-31",
+        "subjectCategory": "Medicine",
+        "applicationFees": "SGD 50",
+        "rating": 0
+    },
+    {
+        "universityName": "ETH Zurich",
+        "universityImage": "https://i.ibb.co/FzM8qCC/uni3.png",
+        "scholarshipCategory": "Excellence",
+        "universityLocation": "Zurich, Switzerland",
+        "applicationDeadline": "2024-10-15",
+        "subjectCategory": "Computer Science",
+        "applicationFees": "CHF 150",
+        "rating": 0
+    },
+    {
+        "universityName": "University of Tokyo",
+        "universityImage": "https://i.ibb.co/98MwwKQ/singapore.jpg",
+        "scholarshipCategory": "Need-based",
+        "universityLocation": "Tokyo, Japan",
+        "applicationDeadline": "2024-11-30",
+        "subjectCategory": "Architecture",
+        "applicationFees": "JPY 30,000",
+        "rating": 0
+    },
+    {
+        "universityName": "University of Cape Town",
+        "universityImage": "https://i.ibb.co/NVHhdSQ/hercules-hall-surrounded-by-greenery-sunlight-daytime-munich-germany.jpg",
+        "scholarshipCategory": "Diversity",
+        "universityLocation": "Cape Town, South Africa",
+        "applicationDeadline": "2024-08-15",
+        "subjectCategory": "Social Sciences",
+        "applicationFees": "ZAR 500",
+        "rating": 0
+    }
+]

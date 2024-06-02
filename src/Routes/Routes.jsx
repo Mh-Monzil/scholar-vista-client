@@ -5,6 +5,7 @@ import Root from "../Root";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
+import AllScholarship from "../pages/AllScholarship/AllScholarship";
 
 
 export const router = createBrowserRouter([
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
         {
           path: '/register',
           element: <Register />
+        },
+        {
+          path: '/all-scholarship',
+          element: <AllScholarship />
         },
       ]
     },
