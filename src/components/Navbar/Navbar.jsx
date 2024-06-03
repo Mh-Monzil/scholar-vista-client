@@ -53,7 +53,7 @@ const Navbar = () => {
   }
 
   return (
-    <header className="p-2 sm:px-6 h-[80px] sticky top-0 z-50 bg-navy">
+    <header className="p-2 h-[80px] sticky top-0 z-50 bg-navy">
       <div className="max-w-7xl flex justify-between items-center h-16 mx-auto relative">
       <button
           onClick={() => setMenu(!menu)}

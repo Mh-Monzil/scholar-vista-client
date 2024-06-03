@@ -29,11 +29,12 @@ const Register = () => {
     try {
       await signInWithGoogle();
       toast.success("Sign In Successful");
-      navigate(from, { replace: true });
       setLoading(false);
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
+      setLoading(false);
     }
   };
 
@@ -69,9 +70,6 @@ const Register = () => {
       const userInfo = { displayName, email, password,image_url, role : 'user' };
       const { data } = await axiosPublic.post("/users", userInfo);
       console.log(data);
-      // if (data.insertedId > 0) {
-      //   toast.success("User  successfully");
-      // }
 
       navigate(from, { replace: true });
       toast.success("Sign Up Successful");
