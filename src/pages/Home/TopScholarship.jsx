@@ -2,6 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import Card from "../../components/Card/Card";
+import YellowButton from "../../components/Shared/YellowButton";
+import NavyButton from "../../components/Shared/NavyButton";
+import WhiteButton from "../../components/Shared/WhiteButton";
 
 const TopScholarship = () => {
   const axiosPublic = UseAxiosPublic();
@@ -27,6 +30,9 @@ const TopScholarship = () => {
         {scholarships?.map((scholar) => (
           <Card key={scholar._id} scholar={scholar} />
         ))}
+      </div>
+      <div className="w-64 ml-auto my-12">
+        <NavyButton label={"See All Scholarship"} />
       </div>
     </div>
   );
