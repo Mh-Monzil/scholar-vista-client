@@ -18,7 +18,7 @@ const Card = ({ scholar }) => {
 
   const ratingStar = {
     size: 25,
-    value: rating,
+    value: 1,
     edit: false,
     activeColor: "#F2A227",
   };

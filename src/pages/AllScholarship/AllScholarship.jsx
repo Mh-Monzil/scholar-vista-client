@@ -2,28 +2,46 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import Card from "../../components/Card/Card";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import YellowButton from "../../components/Shared/YellowButton";
+import { useState } from "react";
 
 const AllScholarship = () => {
   const axiosPublic = UseAxiosPublic();
+  const [scholarships, setScholarships] = useState([]);
+  const [notFound, setNotFound] = useState('');
 
-  const { data: scholarships = [], isLoading } = useQuery({
+  const { data = [], isLoading } = useQuery({
     queryKey: ["scholarships"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/scholarships");
-      console.log(data);
-      return data;
+      // console.log(data);
+      setScholarships(data);
     },
   });
+
+  const onSearch = async (e) => {
+    e.preventDefault();
+    const searchValue = e.target.searchValue.value;
+    console.log(searchValue);
+
+    try{
+      const { data } = await axiosPublic.get(`/scholarship-search/${searchValue}`)
+      console.log(data);
+      if(typeof data === "string"){
+        setNotFound("Nor Scholarship Available");
+      }else{
+        setScholarships(data);
+      }
+    }catch(error){
+      console.log(error.message);
+    }
+
+  };
 
   if (isLoading)
     return (
       <div className="h-screen flex items-center justify-center">
-        <ScaleLoader
-          className=" "
-          height={30}
-          width={3}
-          color="#F2A227"
-        />
+        <ScaleLoader className=" " height={30} width={3} color="#F2A227" />
       </div>
     );
 
@@ -40,7 +58,19 @@ const AllScholarship = () => {
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10">
+      <form onSubmit={onSearch} className="flex items-center gap-2 mt-12">
+        <input
+          type="text"
+          name="searchValue"
+          placeholder="Type here"
+          className="input input-bordered input-warning w-full max-w-xs "
+        />
+        <button type="submit">
+          <YellowButton label={"Search"} />
+        </button>
+      </form>
+
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10">
         {scholarships.map((scholar) => (
           <Card key={scholar._id} scholar={scholar} />
         ))}

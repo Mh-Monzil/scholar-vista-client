@@ -5,6 +5,7 @@ import Card from "../../components/Card/Card";
 import YellowButton from "../../components/Shared/YellowButton";
 import NavyButton from "../../components/Shared/NavyButton";
 import WhiteButton from "../../components/Shared/WhiteButton";
+import { Link } from "react-router-dom";
 
 const TopScholarship = () => {
   const axiosPublic = UseAxiosPublic();
@@ -32,7 +33,9 @@ const TopScholarship = () => {
         ))}
       </div>
       <div className="w-64 ml-auto my-12">
-        <NavyButton label={"See All Scholarship"} />
+        <Link to="/all-scholarship">
+        <NavyButton  label={"See All Scholarship"} />
+        </Link>
       </div>
     </div>
   );
