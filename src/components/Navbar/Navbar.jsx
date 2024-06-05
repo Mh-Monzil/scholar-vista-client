@@ -10,9 +10,9 @@ import WhiteButton from "../Shared/WhiteButton";
 const Navbar = () => {
   const { user, loading } = UseAuth();
   const [menu, setMenu] = useState(false);
-  const role = 'user';
+  const role = "user";
 
-  const menuName = role ==='user' &&  'User Dashboard';
+  const menuName = role === "user" && "User Dashboard";
 
   const routes1 = [
     {
@@ -40,8 +40,19 @@ const Navbar = () => {
     },
     {
       id: 3,
-      name: role === 'user' ? 'User Dashboard' : role === 'admin' ? 'Admin Dashboard' : 'Moderator Dashboard',
-      path: `/${role === 'user' ? 'user-dashboard' : role === 'admin' ? 'admin-dashboard' : 'mod-dashboard'}`,
+      name:
+        role === "user"
+          ? "User Dashboard"
+          : role === "admin"
+          ? "Admin Dashboard"
+          : "Moderator Dashboard",
+      path: `/${
+        role === "user"
+          ? "user-dashboard"
+          : role === "admin"
+          ? "admin-dashboard"
+          : "mod-dashboard"
+      }`,
     },
   ];
 
@@ -53,11 +64,11 @@ const Navbar = () => {
   }
 
   return (
-    <header className="p-2 h-[80px] sticky top-0 z-50 bg-navy">
+    <header className="p-2 px-3 lg:px-6 h-[80px] sticky top-0 z-50 bg-navy">
       <div className="max-w-7xl flex justify-between items-center h-16 mx-auto relative">
-      <button
+        <button
           onClick={() => setMenu(!menu)}
-          className="flex justify-end xl:hidden text-white"
+          className="flex justify-end md:hidden text-white"
         >
           {menu ? (
             <IoClose className="text-4xl" />
@@ -65,14 +76,14 @@ const Navbar = () => {
             <IoMenu className="text-4xl" />
           )}
         </button>
-        <Link to="/" className="flex items-center justify-center gap-2">
+        <Link to="/" className="flex md:flex-1 items-center  gap-2">
           <img className="w-10 h-10 md:w-12 md:h-12" src={logo} alt="" />
           <span className="font-bold text-2xl md:text-3xl text-white">
             Scholar<span className="text-yellow">Vista</span>.{" "}
           </span>
         </Link>
-        
-        <ul className="items-stretch hidden space-x-6 xl:flex text-white">
+
+        <ul className="items-stretch hidden space-x-6 md:flex text-white px-6">
           {routes.map((route) => (
             <li key={route.id}>
               <Link
@@ -87,7 +98,7 @@ const Navbar = () => {
         <ul
           className={`${
             menu
-              ? "absolute xl:hidden top-24 left-4 p-4 pr-20 sm:pr-40 space-y-2 duration-700 ease-in-out shadow-md rounded-md z-50 bg-white"
+              ? "absolute md:hidden top-24 left-4 p-4 pr-20 sm:pr-40 space-y-2 duration-700 ease-in-out shadow-md rounded-md z-50 bg-white"
               : "hidden"
           } `}
         >
@@ -104,7 +115,6 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-8">
-          
           {loading ? (
             <ScaleLoader height={30} width={3} color="#F2A227" />
           ) : !loading && user ? (

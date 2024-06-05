@@ -53,7 +53,7 @@ const Banner = () => {
               data-aos="fade-right"
               data-aos-duration="400"
               data-aos-easing="ease-in-out"
-              className="text-4xl md:text-5xl font-bold md:w-[600px] text-center leading-10 md:leading-[70px]"
+              className="text-4xl md:text-5xl xl:text-7xl font-bold md:w-[600px] text-center leading-10 md:leading-[70px]"
             >
               Unlock Your Future with Our <span className="text-yellow">Scholarships</span>
             </h2>

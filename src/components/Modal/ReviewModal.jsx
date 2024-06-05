@@ -25,7 +25,7 @@ const ReviewModal = ({isOpen, openModal, closeModal}) => {
           reviewerComment: comments
         }
         console.log(reviewInfo);
-        const { data } = await axiosPublic.post("/review", reviewInfo);
+        const { data } = await axiosPublic.post("/reviews", reviewInfo);
         console.log(data);
       }catch(error){
         console.log(error.message);
