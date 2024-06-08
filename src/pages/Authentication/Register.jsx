@@ -27,7 +27,18 @@ const Register = () => {
   // sign in with google
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithGoogle();
+      await signInWithGoogle().then(async (result) => {
+        const userInfo = {
+          displayName: result?.user?.displayName,
+          email: result?.user?.email,
+          password: "Logged with Google",
+          image_url: result?.user?.photoURL,
+          role: "user",
+        };
+        const { data } = await axiosPublic.post("/users", userInfo);
+        console.log(data);
+      });
+
       toast.success("Sign In Successful");
       setLoading(false);
       navigate(from, { replace: true });
@@ -65,15 +76,25 @@ const Register = () => {
 
       //update profile
       await updateUserProfile(displayName, image_url);
-      setUser({ ...result?.user, photoURL: image_url, displayName: displayName });
+      setUser({
+        ...result?.user,
+        photoURL: image_url,
+        displayName: displayName,
+      });
 
-      const userInfo = { displayName, email, password,image_url, role : 'user' };
+      const userInfo = {
+        displayName,
+        email,
+        password,
+        image_url,
+        role: "user",
+      };
       const { data } = await axiosPublic.post("/users", userInfo);
       console.log(data);
 
       navigate(from, { replace: true });
       toast.success("Sign Up Successful");
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
       console.log(error);
       toast.error(
@@ -82,11 +103,9 @@ const Register = () => {
           .replace(/\)/, "")
           .replace(/-/g, " ")}`
       );
-      setLoading(false)
+      setLoading(false);
     }
   };
-
-  
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
@@ -169,7 +188,7 @@ const Register = () => {
                 // name="photo"
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-sm    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="file"
-                {...register('photo', { required: true })}
+                {...register("photo", { required: true })}
                 accept="image/*"
               />
             </div>

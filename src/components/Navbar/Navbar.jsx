@@ -6,11 +6,13 @@ import UseAuth from "../../hooks/useAuth";
 import Profile from "../Profile/Profile";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import WhiteButton from "../Shared/WhiteButton";
+import useUser from "../../hooks/useUser";
 
 const Navbar = () => {
   const { user, loading } = UseAuth();
   const [menu, setMenu] = useState(false);
-  const role = "user";
+  const role = useUser();
+  console.log(role);
 
   const menuName = role === "user" && "User Dashboard";
 
