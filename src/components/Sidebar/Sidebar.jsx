@@ -182,6 +182,88 @@ const Sidebar = () => {
                   </NavLink>
                 </>
               )}
+
+{role === "admin" && (
+                <>
+
+                  {/* add scholarship */}
+                  <NavLink
+                    to="add-scholarship"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                        isActive
+                          ? "bg-navy/90   text-white"
+                          : "text-navy hover:bg-navy/50"
+                      }`
+                    }
+                  >
+                    <MdRateReview />
+                    <span className="mx-4 font-medium">Add Scholarship</span>
+                  </NavLink>
+
+                  {/* manage scholarships */}
+                  <NavLink
+                    to="manage-scholarships"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-white ${
+                        isActive
+                          ? "bg-navy/90   text-white"
+                          : "text-navy hover:bg-navy/50"
+                      }`
+                    }
+                  >
+                    <FaFileAlt />
+                    <span className="mx-4 font-medium">
+                      Manage Scholarships
+                    </span>
+                  </NavLink>
+
+                  {/* manage applied application */}
+                  <NavLink
+                    to="manage-applied-application"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                        isActive
+                          ? "bg-navy/90   text-white"
+                          : "text-navy hover:bg-navy/50"
+                      }`
+                    }
+                  >
+                    <MdRateReview />
+                    <span className="mx-4 font-medium">Manage Applied Application</span>
+                  </NavLink>
+
+                  {/* manage users */}
+                  <NavLink
+                    to="manage-users"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                        isActive
+                          ? "bg-navy/90   text-white"
+                          : "text-navy hover:bg-navy/50"
+                      }`
+                    }
+                  >
+                    <MdRateReview />
+                    <span className="mx-4 font-medium">Manage Users</span>
+                  </NavLink>
+
+                  {/* manage reviews */}
+                  <NavLink
+                    to="manage-reviews"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                        isActive
+                          ? "bg-navy/90   text-white"
+                          : "text-navy hover:bg-navy/50"
+                      }`
+                    }
+                  >
+                    <MdRateReview />
+                    <span className="mx-4 font-medium">Manage Reviews</span>
+                  </NavLink>
+                </>
+              )}
             </nav>
           </div>
         </div>
