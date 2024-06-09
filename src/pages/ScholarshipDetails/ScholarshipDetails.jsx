@@ -29,7 +29,7 @@ const ScholarshipDetails = () => {
   let [isOpen, setIsOpen] = useState(false);
 
   const { data: scholarship = {}, isLoading } = useQuery({
-    queryKey: ["scholarships-details"],
+    queryKey: ["scholarships-details", id],
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/scholarship-details/${id}`);
       console.log(data);
@@ -37,18 +37,7 @@ const ScholarshipDetails = () => {
     },
   });
 
-  const {universityImage,
-    universityName,
-    postDate,
-    universityLocation,
-    scholarshipDescription,
-    subjectCategory,
-    subjectName,
-    scholarshipCategory,
-    stipend,
-    applicationDeadline,
-    serviceCharge,
-    applicationFees} = scholarship;
+
 
   const openModal = () => {
     setIsOpen(true);
@@ -60,18 +49,7 @@ const ScholarshipDetails = () => {
 
   const totalReview = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
-  const applyScholarship = () => {
-    console.log("apply");
-    // const applyInfo = {
-    //   universityName,
-    //   universityLocation,
-    //   subjectCategory,
-    //   appliedDegree: subjectName,
-    //   serviceCharge,
-    //   applicationFees,
-    //   applicationStatus: 'pending',
-    // };
-  };
+  
 
   return (
     <div className="max-w-7xl mx-auto px-4">

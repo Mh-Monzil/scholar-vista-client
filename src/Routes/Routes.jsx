@@ -42,6 +42,7 @@ export const router = createBrowserRouter([
             <ScholarshipDetails />
           </PrivateRoute>
         ),
+        // loader: ({params}) => fetch(`/scholarship-details/${params.id}`)
       },
       {
         path: '/application-form/:id',
