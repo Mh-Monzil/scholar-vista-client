@@ -43,11 +43,11 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      // {
-      //   path: '/application-form/:id',
-      //   element: <ApplicationForm />,
-      //   loader: ({params}) => fetch(`http://localhost:5000/`)
-      // },
+      {
+        path: '/application-form/:id',
+        element: <ApplicationForm />,
+        loader: ({params}) => fetch(`http://localhost:5000/scholarship-details/${params.id}`)
+      },
     ],
   },
 

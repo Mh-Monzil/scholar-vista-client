@@ -48,7 +48,7 @@ const Card = ({ scholar }) => {
           {scholarshipCategory}{" "}
         </p>
         <div className="flex items-center justify-between py-2">
-          <p className="text-3xl font-semibold text-navy">{applicationFees}</p>
+          <p className="text-3xl font-semibold text-navy">${applicationFees}</p>
           <span>
             <ReactStars {...ratingStar} />
           </span>

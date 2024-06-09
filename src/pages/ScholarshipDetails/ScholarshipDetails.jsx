@@ -113,15 +113,7 @@ const ScholarshipDetails = () => {
 
         {/* sidebar */}
         <div className=" card mx-auto rounded-md w-full bg-base-100 shadow-md ">
-          {/* <figure className="relative overflow-hidden rounded-ee-[70px]">
-          <img
-            className="w-full h-60 hover:scale-105 transition-all duration-300"
-            src={`${scholarship?.universityImage}.jpg`}
-          />
-          <span className="absolute bg-navy text-white top-4 right-4 px-3 py-1 rounded-md text-sm">
-            {scholarship?.subjectCategory}
-          </span>
-        </figure> */}
+          
           <div className="card-body">
             <h2 className="card-title text-navy">Want to apply?</h2>
             <p>
@@ -150,7 +142,7 @@ const ScholarshipDetails = () => {
               {scholarship?.serviceCharge}
             </p>
             <p className="text-2xl font-semibold text-navy">
-              {scholarship?.applicationFees}
+              ${scholarship?.applicationFees}
             </p>
             <div onClick={openModal}>
               <YellowButton label={"Apply"} />
