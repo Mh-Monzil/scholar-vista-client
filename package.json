@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^0.0.0-insiders.03c22b4",
+    "@stripe/react-stripe-js": "^2.7.1",
+    "@stripe/stripe-js": "^3.5.0",
     "@tanstack/react-query": "^5.40.0",
     "aos": "^2.3.4",
     "axios": "^1.7.2",

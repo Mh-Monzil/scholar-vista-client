@@ -31,17 +31,7 @@ const Login = () => {
     //google sign in 
     const handleGoogleSignIn = async () => {
         try{
-            await signInWithGoogle().then(async (result) => {
-              const userInfo = {
-                displayName: result?.user?.displayName,
-                email: result?.user?.email,
-                password: "Logged with Google",
-                image_url: result?.user?.photoURL,
-                role: "user",
-              };
-              const { data } = await axiosPublic.post("/users", userInfo);
-              console.log(data);
-            });
+            await signInWithGoogle();
             toast.success("Sign In Successful");
             navigate(from, {replace: true});
         }catch(error){

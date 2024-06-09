@@ -18,6 +18,6 @@ const useUser = () => {
       setUserRole(data)
     }
     
-    return userRole;
+    return userRole.role;
 }
 export default useUser;

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../firebase/Firebase.init";
 import UseAxiosPublic from "../hooks/useAxiosPublic";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -42,30 +43,44 @@ const AuthProvider = ({children}) => {
         })
     }
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
-            setLoading(false);
-            console.log('current user', currentUser);
-            if(currentUser){
-                //get token and store client
-                const userInfo = {email: currentUser.email}
-                axiosPublic.post('/jwt', userInfo, {withCredentials: true})
-                .then(res => {
-                    if(res.data.token){
-                        // console.log(res.data.token);
-                        localStorage.setItem('access-token', res.data.token);
-                        
-                    }
-                })
-            }else{
-                //do something
-                localStorage.removeItem('access-token');
-                setLoading(false);
-            }
-        })
-        return () => unsubscribe();
-    }, [axiosPublic])
+    // Get token from server
+  const getToken = async email => {
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/jwt`,
+      { email },
+      { withCredentials: true }
+    )
+    return data
+  }
+
+  const saveUser = async user => {
+    const currentUser = {
+        name: user?.displayName,
+      email: user?.email,
+      image_url: user?.photoURL,
+      role: 'user',
+      status: 'Verified',
+    }
+    const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/users`, currentUser)
+    console.log(data);
+    return data;
+  }
+
+  // onAuthStateChange
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser)
+      console.log(currentUser);
+      if (currentUser) {
+        getToken(currentUser.email)
+        saveUser(currentUser);
+      }
+      setLoading(false)
+    })
+    return () => {
+      return unsubscribe()
+    }
+  }, [])
 
     const authInfo = {user, loading, setLoading, createUser, loginUser,signInWithGoogle, logOut, updateUserProfile,setUser};
 

@@ -11,11 +11,10 @@ import useUser from "../../hooks/useUser";
 const Navbar = () => {
   const { user, loading } = UseAuth();
   const [menu, setMenu] = useState(false);
-  const loggedUser = useUser();
-  const role = loggedUser.role;
+  const role = useUser();
   console.log(role);
 
-  const menuName = role === "user" && "User Dashboard";
+  // const menuName = role === "user" && "User Dashboard";
 
   const routes1 = [
     {
@@ -49,13 +48,7 @@ const Navbar = () => {
           : role === "admin"
           ? "Admin Dashboard"
           : "Moderator Dashboard",
-      path: `/${
-        role === "user"
-          ? "user-dashboard"
-          : role === "admin"
-          ? "admin-dashboard"
-          : "mod-dashboard"
-      }`,
+      path: 'dashboard/my-profile',
     },
   ];
 

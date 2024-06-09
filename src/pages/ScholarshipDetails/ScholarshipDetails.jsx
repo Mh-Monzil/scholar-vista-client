@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link, useParams } from "react-router-dom";
@@ -20,15 +19,14 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import ApplicantsReview from "../../components/ApplicantsReview/ApplicantsReview";
 import ReviewModal from "../../components/Modal/ReviewModal";
+import ApplyModal from "../../components/Modal/ApplyModal";
 
-//modal 
-
-
+//modal
 
 const ScholarshipDetails = () => {
   const axiosPublic = UseAxiosPublic();
   const { id } = useParams();
-  let [isOpen, setIsOpen] = useState(false)
+  let [isOpen, setIsOpen] = useState(false);
 
   const { data: scholarship = {}, isLoading } = useQuery({
     queryKey: ["scholarships-details"],
@@ -39,21 +37,50 @@ const ScholarshipDetails = () => {
     },
   });
 
+  const {universityImage,
+    universityName,
+    postDate,
+    universityLocation,
+    scholarshipDescription,
+    subjectCategory,
+    subjectName,
+    scholarshipCategory,
+    stipend,
+    applicationDeadline,
+    serviceCharge,
+    applicationFees} = scholarship;
 
-  const  openModal = ()  =>  {
-    setIsOpen(true)
-  }
+  const openModal = () => {
+    setIsOpen(true);
+  };
 
-  const  closeModal = ()  => {
-    setIsOpen(false)
-  }
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
+  const totalReview = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
-  const totalReview = [{id: 1}, {id: 2}, {id: 3}, {id: 4},];
+  const applyScholarship = () => {
+    console.log("apply");
+    // const applyInfo = {
+    //   universityName,
+    //   universityLocation,
+    //   subjectCategory,
+    //   appliedDegree: subjectName,
+    //   serviceCharge,
+    //   applicationFees,
+    //   applicationStatus: 'pending',
+    // };
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4">
-        <ReviewModal isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
+      <ApplyModal
+        isOpen={isOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+        scholarship={scholarship}
+      />
       <div className=" my-10 grid grid-cols-1 lg:grid-cols-3  gap-6 lg:gap-10">
         <div className="md:col-span-2 row-span-2 card mx-auto rounded-md w-full bg-base-100  ">
           <figure className="relative ">
@@ -76,9 +103,9 @@ const ScholarshipDetails = () => {
             <p className=" font-medium py-2 text-navy">
               {scholarship?.scholarshipDescription}
             </p>
-            <div className="card-actions"  >
+            <div className="card-actions">
               <span onClick={openModal}>
-              <YellowButton label={"Add Review"} />
+                <YellowButton label={"Add Review"} />
               </span>
             </div>
           </div>
@@ -125,7 +152,9 @@ const ScholarshipDetails = () => {
             <p className="text-2xl font-semibold text-navy">
               {scholarship?.applicationFees}
             </p>
-            <YellowButton label={"Apply"} />
+            <div onClick={openModal}>
+              <YellowButton label={"Apply"} />
+            </div>
           </div>
         </div>
       </div>
@@ -155,9 +184,11 @@ const ScholarshipDetails = () => {
           }}
           className="mySwiper w-full"
         >
-          {totalReview.map(review => <SwiperSlide key={review.id}>
-            <ApplicantsReview />
-          </SwiperSlide> )}
+          {totalReview.map((review) => (
+            <SwiperSlide key={review.id}>
+              <ApplicantsReview />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
