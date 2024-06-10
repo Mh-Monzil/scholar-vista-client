@@ -7,8 +7,8 @@ import { useState } from "react";
 
 const AllScholarship = () => {
   const axiosPublic = UseAxiosPublic();
-  const [scholarships, setScholarships] = useState([]);
   const [notFound, setNotFound] = useState('');
+  const [scholarships, setScholarships] = useState([]);
 
   const { data = [], isLoading } = useQuery({
     queryKey: ["scholarships"],
