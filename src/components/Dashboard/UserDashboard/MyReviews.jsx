@@ -10,7 +10,8 @@ import toast from "react-hot-toast";
 
 const MyReviews = () => {
   const axiosPublic = UseAxiosPublic();
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [mountModal, setMountModal] = useState(false);
   const [editReview, setEditReview] = useState({});
 
   const { data: reviews = [], refetch } = useQuery({
@@ -24,9 +25,10 @@ const MyReviews = () => {
   console.log(reviews);
 
   const openModal = (review) => {
-    setIsOpen(true);
     setEditReview(review)
-      refetch();
+    setIsOpen(true);
+    refetch();
+    setMountModal(true);
   };
 
   const closeModal = () => {
@@ -46,12 +48,14 @@ const MyReviews = () => {
 
   return (
     <div>
-      <EditReviewModal
+      {
+        mountModal && <EditReviewModal
         isOpen={isOpen}
         openModal={openModal}
         closeModal={closeModal}
         editReview={editReview}
       />
+      }
       <h2 className="text-2xl md:text-3xl font-bold underline">
         My Reviews
       </h2>
@@ -91,3 +95,5 @@ const MyReviews = () => {
 };
 
 export default MyReviews;
+
+
