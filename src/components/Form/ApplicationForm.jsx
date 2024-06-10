@@ -13,7 +13,7 @@ const ApplicationForm = () => {
   const scholarship = useLoaderData();
   console.log(scholarship);
 
-  const {_id, universityName, scholarshipCategory, subjectCategory, applicationFees, serviceCharge, universityLocation } = scholarship;
+  const {_id, universityName, scholarshipCategory, subjectCategory, applicationFees, serviceCharge, universityLocation, scholarshipName } = scholarship;
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -47,6 +47,7 @@ const ApplicationForm = () => {
         applicationFees,
         serviceCharge,
         universityLocation,
+        scholarshipName,
         status: 'pending',
         name: user?.displayName,
         email: user?.email,

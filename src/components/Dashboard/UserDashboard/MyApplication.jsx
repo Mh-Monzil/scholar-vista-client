@@ -58,7 +58,7 @@ const MyApplication = () => {
         <table className="table">
           {/* head */}
           <thead className="bg-navy text-white">
-            <tr className="text-center">
+            <tr className="text-center font-medium">
               <th>University Name</th>
               <th>University Address</th>
               <th>Subject Category</th>
@@ -66,13 +66,15 @@ const MyApplication = () => {
               <th>Application Fees</th>
               <th>Service Charge</th>
               <th>Status</th>
-              <th colSpan={3}>Action</th>
+              <th>Details</th>
+              <th>Edit</th>
+              <th>Cancel</th>
               <th>Review</th>
             </tr>
           </thead>
           <tbody>
             {appliedScholarship.map((scholarship) => (
-              <tr key={scholarship?._id} className="text-center font-medium">
+              <tr key={scholarship?._id} className="text-center font-medium text-lg">
                 <td>{scholarship?.universityName}</td>
                 <td>{scholarship?.universityLocation}</td>
                 <td>{scholarship?.subjectCategory}</td>

@@ -17,8 +17,8 @@ const ReviewModal = ({ isOpen, openModal, closeModal,reviewScholarship }) => {
 
   const onSubmit = async (data) => {
     const { rating, comments, date } = data;
-    const {scholarship_id, universityName, scholarshipName,  } = reviewScholarship;
-
+    const {scholarship_id, universityName, scholarshipName  } = reviewScholarship;
+    console.log(scholarshipName);
     try {
       const reviewInfo = {
         scholarshipName,
@@ -37,6 +37,7 @@ const ReviewModal = ({ isOpen, openModal, closeModal,reviewScholarship }) => {
       if(data.insertedId){
         closeModal();
         toast.success("Review added successfully");
+        reset();
       }
     } catch (error) {
       console.log(error.message);
