@@ -35,7 +35,17 @@ const ScholarshipDetails = () => {
     },
   });
 
+  console.log(scholarship?._id);
 
+  const { data: reviews = [] } = useQuery({
+    enabled: !isLoading,
+    queryKey: ["reviews" ],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get(`/reviews/${scholarship?._id}`);
+      console.log(reviews);
+      return data;
+    },
+  });
 
   const openModal = () => {
     setIsOpen(true);
@@ -79,11 +89,6 @@ const ScholarshipDetails = () => {
             <p className=" font-medium py-2 text-navy">
               {scholarship?.scholarshipDescription}
             </p>
-            <div className="card-actions">
-              <span onClick={openModal}>
-                <YellowButton label={"Add Review"} />
-              </span>
-            </div>
           </div>
         </div>
 
