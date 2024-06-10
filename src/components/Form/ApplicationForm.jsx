@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { imageUpload } from "../../api/utils/image";
 import UseAuth from "../../hooks/useAuth";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
@@ -7,12 +7,13 @@ import toast from "react-hot-toast";
 
 const ApplicationForm = () => {
     const {user} = UseAuth();
+    const navigate = useNavigate();
     const axiosPublic = UseAxiosPublic();
   const { register, handleSubmit,reset } = useForm();
   const scholarship = useLoaderData();
   console.log(scholarship);
 
-  const {_id, universityName, scholarshipCategory, subjectCategory, applicationFees, serviceCharge } = scholarship;
+  const {_id, universityName, scholarshipCategory, subjectCategory, applicationFees, serviceCharge, universityLocation } = scholarship;
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -45,6 +46,7 @@ const ApplicationForm = () => {
         subjectCategory,
         applicationFees,
         serviceCharge,
+        universityLocation,
         status: 'pending',
         name: user?.displayName,
         email: user?.email,
@@ -57,7 +59,8 @@ const ApplicationForm = () => {
       console.log(res.data);
       if(res.data.insertedId){
         toast.success("Applied Successfully");
-        reset();
+        // reset();
+        navigate('/dashboard/my-application')
       }
 
     } catch (error) {

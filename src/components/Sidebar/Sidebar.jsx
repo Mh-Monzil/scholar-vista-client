@@ -45,7 +45,7 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#ffc66f] w-72 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-navy w-72 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -71,10 +71,10 @@ const Sidebar = () => {
               <NavLink
                 to="my-profile"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md   hover:text-white ${
+                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
                     isActive
-                      ? "bg-navy/90   text-white"
-                      : "text-navy hover:bg-navy/50 "
+                      ? "bg-white text-navy"
+                      : "text-white hover:bg-orange-100 "
                   }`
                 }
               >
@@ -89,10 +89,10 @@ const Sidebar = () => {
                   <NavLink
                     to="my-application"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-white ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-navy ${
                         isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
+                          ? "bg-white text-navy"
+                          : "text-white hover:bg-orange-100 "
                       }`
                     }
                   >
@@ -104,10 +104,10 @@ const Sidebar = () => {
                   <NavLink
                     to="my-reviews"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
                         isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
+                          ? "bg-white text-navy"
+                          : "text-white hover:bg-orange-100 "
                       }`
                     }
                   >
@@ -123,10 +123,10 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-scholarships"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-white ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-navy ${
                         isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
+                          ? "bg-white text-navy"
+                          : "text-white hover:bg-orange-100 "
                       }`
                     }
                   >
@@ -140,10 +140,10 @@ const Sidebar = () => {
                   <NavLink
                     to="all-reviews"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
                         isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
+                          ? "bg-white text-navy"
+                          : "text-white hover:bg-orange-100 "
                       }`
                     }
                   >
@@ -155,25 +155,27 @@ const Sidebar = () => {
                   <NavLink
                     to="all-applied-scholarship"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
                         isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
+                          ? "bg-white text-navy"
+                          : "text-white hover:bg-orange-100 "
                       }`
                     }
                   >
                     <MdRateReview />
-                    <span className="mx-4 font-medium">All Applied Scholarship</span>
+                    <span className="mx-4 font-medium">
+                      All Applied Scholarship
+                    </span>
                   </NavLink>
 
                   {/* add scholarship */}
                   <NavLink
                     to="add-scholarship"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
                         isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
+                          ? "bg-white text-navy"
+                          : "text-white hover:bg-orange-100 "
                       }`
                     }
                   >
@@ -183,17 +185,16 @@ const Sidebar = () => {
                 </>
               )}
 
-{role === "admin" && (
+              {role === "admin" && (
                 <>
-
                   {/* add scholarship */}
                   <NavLink
                     to="add-scholarship"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
                         isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
+                          ? "bg-white text-navy"
+                          : "text-white hover:bg-orange-100 "
                       }`
                     }
                   >
@@ -205,11 +206,11 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-scholarships"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-white ${
-                        isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
-                      }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-navy ${
+                    isActive
+                      ? "bg-white text-navy"
+                      : "text-white hover:bg-orange-100 "
+                  }`
                     }
                   >
                     <FaFileAlt />
@@ -222,26 +223,28 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-applied-application"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
-                        isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
-                      }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                    isActive
+                      ? "bg-white text-navy"
+                      : "text-white hover:bg-orange-100 "
+                  }`
                     }
                   >
                     <MdRateReview />
-                    <span className="mx-4 font-medium">Manage Applied Application</span>
+                    <span className="mx-4 font-medium">
+                      Manage Applied Application
+                    </span>
                   </NavLink>
 
                   {/* manage users */}
                   <NavLink
                     to="manage-users"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
-                        isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
-                      }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                    isActive
+                      ? "bg-white text-navy"
+                      : "text-white hover:bg-orange-100 "
+                  }`
                     }
                   >
                     <MdRateReview />
@@ -252,11 +255,11 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-reviews"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-white ${
-                        isActive
-                          ? "bg-navy/90   text-white"
-                          : "text-navy hover:bg-navy/50"
-                      }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                    isActive
+                      ? "bg-white text-navy"
+                      : "text-white hover:bg-orange-100 "
+                  }`
                     }
                   >
                     <MdRateReview />
