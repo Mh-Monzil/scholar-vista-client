@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const MyApplication = () => {
   const axiosPublic = UseAxiosPublic();
+  const navigate = useNavigate();
 
   const { data: appliedScholarship = [] } = useQuery({
     queryKey: ["appliedScholarship"],
@@ -12,6 +14,11 @@ const MyApplication = () => {
       return data;
     },
   });
+
+  const editApplication = (status,id) => {
+    if(status === 'processing') return toast.error("Cannot edit application is processing");
+    navigate(`edit-Application/${id}`);
+  }
 
   return (
     <div>
@@ -50,7 +57,7 @@ const MyApplication = () => {
                     </Link>
                 </td>
                 <td>
-                    <button className="bg-blue-200 rounded-md py-1.5 px-3 text-blue-700 font-semibold">Edit</button>
+                    <button onClick={() => editApplication(scholarship?.status, scholarship?._id)} className="bg-blue-200 rounded-md py-1.5 px-3 text-blue-700 font-semibold">Edit</button>
                 </td>
                 <td>
                     <button className="bg-red-200 rounded-md py-1.5 px-3 text-rose-700 font-semibold">Cancel</button>

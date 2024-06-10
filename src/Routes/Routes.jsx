@@ -12,6 +12,7 @@ import MyProfile from "../components/Dashboard/UserDashboard/MyProfile";
 import MyApplication from "../components/Dashboard/UserDashboard/MyApplication";
 import MyReviews from "../components/Dashboard/UserDashboard/MyReviews";
 import ApplicationForm from "../components/Form/ApplicationForm";
+import EditApplicationForm from "../components/Form/EditApplicationForm";
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,11 @@ export const router = createBrowserRouter([
       {
         path: 'my-reviews',
         element: <MyReviews />
+      },
+      {
+        path: 'my-application/edit-application/:id',
+        element: <EditApplicationForm />,
+        loader: ({params}) => fetch(`http://localhost:5000/applied-scholarships/${params.id}`)
       },
     ]
   },
