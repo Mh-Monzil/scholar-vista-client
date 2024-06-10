@@ -51,7 +51,7 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-navy mx-auto">
+            <div className="w-full hidden md:flex px-4 py-2  rounded-lg justify-center items-center bg-navy mx-auto">
               <Link to="/" className="flex md:flex-1 items-center  gap-2">
                 <img className="w-8 h-8 md:w-12 md:h-12" src={logo} alt="" />
                 <span className="font-bold text-2xl text-white">
@@ -71,7 +71,7 @@ const Sidebar = () => {
               <NavLink
                 to="my-profile"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                     isActive
                       ? "bg-white text-navy"
                       : "text-white hover:bg-orange-100 "
@@ -89,7 +89,7 @@ const Sidebar = () => {
                   <NavLink
                     to="my-application"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white    hover:text-navy ${
                         isActive
                           ? "bg-white text-navy"
                           : "text-white hover:bg-orange-100 "
@@ -104,7 +104,7 @@ const Sidebar = () => {
                   <NavLink
                     to="my-reviews"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                         isActive
                           ? "bg-white text-navy"
                           : "text-white hover:bg-orange-100 "
@@ -123,7 +123,7 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-scholarships"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white   hover:text-navy ${
                         isActive
                           ? "bg-white text-navy"
                           : "text-white hover:bg-orange-100 "
@@ -140,7 +140,7 @@ const Sidebar = () => {
                   <NavLink
                     to="all-reviews"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                         isActive
                           ? "bg-white text-navy"
                           : "text-white hover:bg-orange-100 "
@@ -155,7 +155,7 @@ const Sidebar = () => {
                   <NavLink
                     to="all-applied-scholarship"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                         isActive
                           ? "bg-white text-navy"
                           : "text-white hover:bg-orange-100 "
@@ -172,7 +172,7 @@ const Sidebar = () => {
                   <NavLink
                     to="add-scholarship"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                         isActive
                           ? "bg-white text-navy"
                           : "text-white hover:bg-orange-100 "
@@ -191,7 +191,7 @@ const Sidebar = () => {
                   <NavLink
                     to="add-scholarship"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                         isActive
                           ? "bg-white text-navy"
                           : "text-white hover:bg-orange-100 "
@@ -206,7 +206,7 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-scholarships"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md    hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                     isActive
                       ? "bg-white text-navy"
                       : "text-white hover:bg-orange-100 "
@@ -223,7 +223,7 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-applied-application"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                     isActive
                       ? "bg-white text-navy"
                       : "text-white hover:bg-orange-100 "
@@ -240,7 +240,7 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-users"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                     isActive
                       ? "bg-white text-navy"
                       : "text-white hover:bg-orange-100 "
@@ -255,7 +255,7 @@ const Sidebar = () => {
                   <NavLink
                     to="manage-reviews"
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md hover:text-navy ${
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                     isActive
                       ? "bg-white text-navy"
                       : "text-white hover:bg-orange-100 "
@@ -277,7 +277,7 @@ const Sidebar = () => {
           {/* logout */}
           <button
             onClick={logOut}
-            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className="flex w-full items-center px-4 py-2 mt-5 text-white  hover:bg-orange-100   hover:text-navy transition-colors duration-300 transform shadow-sm shadow-white"
           >
             <GrLogout className="w-5 h-5" />
 

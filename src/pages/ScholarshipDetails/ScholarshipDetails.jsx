@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import YellowButton from "../../components/Shared/YellowButton";
 import { IoLocationSharp } from "react-icons/io5";
-
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -18,7 +17,6 @@ import "swiper/css/pagination";
 // import required modules
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import ApplicantsReview from "../../components/ApplicantsReview/ApplicantsReview";
-import ReviewModal from "../../components/Modal/ReviewModal";
 import ApplyModal from "../../components/Modal/ApplyModal";
 
 //modal

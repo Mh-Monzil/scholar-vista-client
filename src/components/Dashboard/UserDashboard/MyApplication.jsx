@@ -2,10 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import UseAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import ReviewModal from "../../Modal/ReviewModal";
 
 const MyApplication = () => {
   const axiosPublic = UseAxiosPublic();
   const navigate = useNavigate();
+  let [isOpen, setIsOpen] = useState(false);
+  const [reviewScholarship, setReviewScholarship] = useState({});
 
   const { data: appliedScholarship = [], refetch } = useQuery({
     queryKey: ["appliedScholarship"],
@@ -15,23 +19,38 @@ const MyApplication = () => {
     },
   });
 
-
-  const editApplication = (status,id) => {
-    if(status === 'processing') return toast.error("Cannot edit application is processing");
+  const editApplication = (status, id) => {
+    if (status === "processing")
+      return toast.error("Cannot edit application is processing");
     navigate(`edit-Application/${id}`);
-  }
+  };
 
   const deleteApplication = async (id) => {
-    const {data} = await axiosPublic.delete(`/applied-scholarship/${id}`);
+    const { data } = await axiosPublic.delete(`/applied-scholarship/${id}`);
     console.log(data);
-    if(data.deletedCount > 0){
+    if (data.deletedCount > 0) {
       refetch();
       toast.success("Application deleted successfully");
     }
-  }
+  };
+
+  const openModal = (scholarship) => {
+    setIsOpen(true);
+    setReviewScholarship(scholarship);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div>
+      <ReviewModal
+        isOpen={isOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+        reviewScholarship={reviewScholarship}
+      />
       <h2 className="text-2xl md:text-3xl font-bold underline">
         My Application
       </h2>
@@ -62,18 +81,39 @@ const MyApplication = () => {
                 <td>${scholarship?.serviceCharge}</td>
                 <td>{scholarship?.status}</td>
                 <td>
-                    <Link to={`/scholarship-details/${scholarship?.scholarship_id}`}>
-                    <button className="bg-green-200 rounded-md py-1.5 px-3 text-green-700 font-semibold">Details</button>
-                    </Link>
+                  <Link
+                    to={`/scholarship-details/${scholarship?.scholarship_id}`}
+                  >
+                    <button className="bg-green-200 rounded-md py-1.5 px-3 text-green-700 font-semibold">
+                      Details
+                    </button>
+                  </Link>
                 </td>
                 <td>
-                    <button onClick={() => editApplication(scholarship?.status, scholarship?._id)} className="bg-blue-200 rounded-md py-1.5 px-5 text-blue-700 font-semibold">Edit</button>
+                  <button
+                    onClick={() =>
+                      editApplication(scholarship?.status, scholarship?._id)
+                    }
+                    className="bg-blue-200 rounded-md py-1.5 px-5 text-blue-700 font-semibold"
+                  >
+                    Edit
+                  </button>
                 </td>
                 <td>
-                    <button onClick={() => deleteApplication(scholarship?._id)} className="bg-red-200 rounded-md py-1.5 px-3 text-rose-700 font-semibold">Cancel</button>
+                  <button
+                    onClick={() => deleteApplication(scholarship?._id)}
+                    className="bg-red-200 rounded-md py-1.5 px-3 text-rose-700 font-semibold"
+                  >
+                    Cancel
+                  </button>
                 </td>
                 <td>
-                    <button className="bg-navy/90 rounded-md py-1.5 px-3 text-white font-semibold">Add Review</button>
+                  <button
+                    onClick={() => openModal(scholarship)}
+                    className="bg-yellow/90 rounded-md py-1.5 px-3 text-navy font-semibold"
+                  >
+                    Add Review
+                  </button>
                 </td>
               </tr>
             ))}
