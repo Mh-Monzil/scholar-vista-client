@@ -17,6 +17,7 @@ import ManageScholarship from "../components/Dashboard/ModeratorDashboard/Manage
 import AllReviews from "../components/Dashboard/ModeratorDashboard/AllReviews";
 import AllAppliedScholarship from "../components/Dashboard/ModeratorDashboard/AllAppliedScholarship";
 import AddScholarship from "../components/Dashboard/ModeratorDashboard/AddScholarship";
+import ManageUsers from "../components/Dashboard/AdminDashboard/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ export const router = createBrowserRouter([
       {
         path: 'add-scholarship',
         element: <AddScholarship />
+      },
+      {
+        path: 'manage-users',
+        element: <ManageUsers />
       },
     ]
   },

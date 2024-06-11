@@ -221,7 +221,7 @@ const Sidebar = () => {
 
                   {/* manage applied application */}
                   <NavLink
-                    to="manage-applied-application"
+                    to="all-applied-scholarship"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
                     isActive
@@ -234,6 +234,21 @@ const Sidebar = () => {
                     <span className="mx-4 font-medium">
                       Manage Applied Application
                     </span>
+                  </NavLink>
+
+                  {/* manage reviews */}
+                  <NavLink
+                    to="all-reviews"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
+                    isActive
+                      ? "bg-white text-navy"
+                      : "text-white hover:bg-orange-100 "
+                  }`
+                    }
+                  >
+                    <MdRateReview />
+                    <span className="mx-4 font-medium">Manage Reviews</span>
                   </NavLink>
 
                   {/* manage users */}
@@ -251,20 +266,7 @@ const Sidebar = () => {
                     <span className="mx-4 font-medium">Manage Users</span>
                   </NavLink>
 
-                  {/* manage reviews */}
-                  <NavLink
-                    to="manage-reviews"
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform rounded-md shadow-sm shadow-white hover:text-navy ${
-                    isActive
-                      ? "bg-white text-navy"
-                      : "text-white hover:bg-orange-100 "
-                  }`
-                    }
-                  >
-                    <MdRateReview />
-                    <span className="mx-4 font-medium">Manage Reviews</span>
-                  </NavLink>
+                  
                 </>
               )}
             </nav>

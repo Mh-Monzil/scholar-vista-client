@@ -87,7 +87,7 @@ const ManageScholarship = () => {
                 <th>Application Fees</th>
                 <th>Details</th>
                 <th>Edit</th>
-                <th>Cancel</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>

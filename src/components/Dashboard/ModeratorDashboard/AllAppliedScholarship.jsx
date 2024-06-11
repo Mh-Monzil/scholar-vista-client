@@ -114,7 +114,7 @@ const AllAppliedScholarship = () => {
                       to={`/scholarship-details/${scholarship?.scholarship_id}`}
                     >
                       <button className=" tooltip" data-tip="Details">
-                        <TbListDetails className="text-3xl text-navy mx-auto cursor-pointer" />
+                        <TbListDetails className="text-3xl text-green-500 mx-auto cursor-pointer" />
                       </button>
                     </Link>
                   </td>
@@ -124,7 +124,7 @@ const AllAppliedScholarship = () => {
                       className=" tooltip"
                       data-tip="Feedback"
                     >
-                      <MdFeedback className="text-3xl text-navy mx-auto cursor-pointer" />
+                      <MdFeedback className="text-3xl text-orange-400 mx-auto cursor-pointer" />
                     </button>
                   </td>
                   <td>
@@ -133,7 +133,7 @@ const AllAppliedScholarship = () => {
                       className="tooltip"
                       data-tip="Cancel"
                     >
-                      <MdCancel className="text-3xl mb-1 text-navy mx-auto cursor-pointer" />
+                      <MdCancel className="text-3xl mb-1 text-rose-500 mx-auto cursor-pointer" />
                     </button>
                   </td>
                 </tr>

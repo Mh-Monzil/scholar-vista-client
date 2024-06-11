@@ -16,10 +16,12 @@ const MyApplication = () => {
   const { data: appliedScholarship = [], refetch } = useQuery({
     queryKey: ["appliedScholarship"],
     queryFn: async () => {
-      const { data } = await axiosPublic(`/my-applied-scholarships${user?.email}`);
+      const { data } = await axiosPublic.get(`/my-applied-scholarships/${user?.email}`);
+      
       return data;
     },
   });
+  console.log(appliedScholarship);
 
   const editApplication = (status, id) => {
     if (status === "processing")
@@ -75,7 +77,7 @@ const MyApplication = () => {
             </tr>
           </thead>
           <tbody>
-            {appliedScholarship.map((scholarship) => (
+            {appliedScholarship?.map((scholarship) => (
               <tr key={scholarship?._id} className="text-center font-medium text-lg">
                 <td>{scholarship?.universityName}</td>
                 <td>{scholarship?.universityLocation}</td>
