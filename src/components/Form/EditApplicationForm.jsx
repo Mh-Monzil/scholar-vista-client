@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { imageUpload } from "../../api/utils/image";
 
 const EditApplicationForm = () => {
   const application = useLoaderData();
+  const {id} = useParams();
   const axiosPublic = UseAxiosPublic();
   const { register, handleSubmit, reset } = useForm();
 
+console.log(id);
   const {
     scholarship_id,
     phone,
@@ -28,7 +30,6 @@ const EditApplicationForm = () => {
     
     // console.log(data);
     const {
-        photo,
       phone,
       address,
       gender,
@@ -42,8 +43,8 @@ const EditApplicationForm = () => {
     
     
     try{
-        const image_url = await imageUpload(photo[0])
         const editedInfo = {
+
             scholarship_id,
           phone,
           image_url,
@@ -58,9 +59,9 @@ const EditApplicationForm = () => {
           subjectCategory
         };
         
-        const res = await axiosPublic.patch('/applied-scholarships', editedInfo);
+        const res = await axiosPublic.patch(`/applied-scholarships/${id}`, editedInfo);
         console.log(res.data);
-        if(res.data.modifiedCount === 1){
+        if(res.data.modifiedCount > 0){
             toast.success("Application edited successfully")
         }else{
             toast.error("Data is up to date")
@@ -99,31 +100,6 @@ const EditApplicationForm = () => {
             defaultValue={phone}
             {...register("phone", { required: true })}
           />
-        </div>
-
-        {/* photo url  */}
-        <div className="mt-4">
-          <label
-            className="block mb-2 text-sm font-medium text-gray-600 "
-            htmlFor="photo"
-          >
-            Photo URL
-          </label>
-          <div className="relative">
-            <input
-              id="photo"
-              autoComplete="photo"
-              className="block w-full px-4 py-1.5 text-gray-700 bg-white border rounded-sm    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
-              type="file"
-              {...register("photo")}
-              accept="image/*"
-            />
-            <img
-              className="w-10 h-10 absolute right-0 top-1/2 -translate-y-1/2"
-              src={image_url}
-              alt=""
-            />
-          </div>
         </div>
 
         {/* address  */}
