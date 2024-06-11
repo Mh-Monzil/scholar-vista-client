@@ -12,9 +12,11 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
+import UseAuth from "../../../hooks/useAuth";
 
 
 const MyReviews = () => {
+  const {user} = UseAuth();
   const axiosPublic = UseAxiosPublic();
   const [isOpen, setIsOpen] = useState(false);
   const [editReview, setEditReview] = useState({});
@@ -23,7 +25,7 @@ const MyReviews = () => {
   const { data: reviews = [], refetch } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
-      const { data } = await axiosPublic("/reviews");
+      const { data } = await axiosPublic(`/my-reviews/${user?.email}`);
       console.log(data);
       return data;
     },

@@ -4,8 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import ReviewModal from "../../Modal/ReviewModal";
+import UseAuth from "../../../hooks/useAuth";
 
 const MyApplication = () => {
+  const {user} = UseAuth();
   const axiosPublic = UseAxiosPublic();
   const navigate = useNavigate();
   let [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,7 @@ const MyApplication = () => {
   const { data: appliedScholarship = [], refetch } = useQuery({
     queryKey: ["appliedScholarship"],
     queryFn: async () => {
-      const { data } = await axiosPublic("/applied-scholarships");
+      const { data } = await axiosPublic(`/my-applied-scholarships${user?.email}`);
       return data;
     },
   });

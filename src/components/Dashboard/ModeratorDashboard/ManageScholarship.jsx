@@ -21,7 +21,7 @@ const ManageScholarship = () => {
   const [scholarship, setScholarship] = useState({});
   const { register, handleSubmit, reset } = useForm();
 
-  const { data: scholarships = [], isLoading } = useQuery({
+  const { data: scholarships = [], isLoading, refetch } = useQuery({
     queryKey: ["scholarships"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/scholarships");
@@ -40,8 +40,14 @@ const ManageScholarship = () => {
     setIsOpen(false);
   };
 
-  const deleteApplication = (id) => {
+  const deleteApplication = async (id) => {
     console.log(id, "delete");
+    const {data} = await axiosPublic.delete(`/scholarship/${id}`);
+    console.log(data);
+    if(data.deletedCount > 0){
+      toast.success("Scholarships deleted successfully")
+      refetch();
+    }
   };
 
   const onSubmit = async (data) => {
