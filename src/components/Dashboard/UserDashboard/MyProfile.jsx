@@ -7,7 +7,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 
 const MyProfile = () => {
   const { user, loading } = UseAuth() || {}
-  const role = useUser();
+  const [role, isLoading] = useUser();
 
   console.log(user)
   if (loading) return <ScaleLoader height={30} width={3} color="#F2A227" />

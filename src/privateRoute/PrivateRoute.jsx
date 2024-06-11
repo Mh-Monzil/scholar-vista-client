@@ -7,7 +7,7 @@ import useUser from "../hooks/useUser";
 const PrivateRoute = ({children}) => {
     const {user,loading} = UseAuth();
     const location = useLocation();
-    const role = useUser();
+    const [role, isLoading] = useUser();
 
 
     if(loading || !role){

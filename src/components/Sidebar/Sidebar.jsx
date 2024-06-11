@@ -13,7 +13,7 @@ import useUser from "../../hooks/useUser";
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
-  const role = useUser();
+  const [role, isLoading] = useUser();
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
