@@ -14,6 +14,7 @@ import MyReviews from "../components/Dashboard/UserDashboard/MyReviews";
 import ApplicationForm from "../components/Form/ApplicationForm";
 import EditApplicationForm from "../components/Form/EditApplicationForm";
 import ManageScholarship from "../components/Dashboard/ModeratorDashboard/ManageScholarship";
+import AllReviews from "../components/Dashboard/ModeratorDashboard/AllReviews";
 
 export const router = createBrowserRouter([
   {
@@ -83,7 +84,11 @@ export const router = createBrowserRouter([
       {
         path: 'manage-scholarships',
         element: <ManageScholarship />
-      }
+      },
+      {
+        path: 'all-reviews',
+        element: <AllReviews />
+      },
     ]
   },
 ]);
