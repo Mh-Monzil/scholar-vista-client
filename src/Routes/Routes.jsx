@@ -16,6 +16,7 @@ import EditApplicationForm from "../components/Form/EditApplicationForm";
 import ManageScholarship from "../components/Dashboard/ModeratorDashboard/ManageScholarship";
 import AllReviews from "../components/Dashboard/ModeratorDashboard/AllReviews";
 import AllAppliedScholarship from "../components/Dashboard/ModeratorDashboard/AllAppliedScholarship";
+import AddScholarship from "../components/Dashboard/ModeratorDashboard/AddScholarship";
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
       {
         path: 'all-applied-scholarship',
         element: <AllAppliedScholarship />
+      },
+      {
+        path: 'add-scholarship',
+        element: <AddScholarship />
       },
     ]
   },
