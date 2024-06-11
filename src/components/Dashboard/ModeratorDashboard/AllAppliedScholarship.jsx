@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-    Dialog,
-    Transition,
-    TransitionChild,
-    DialogPanel,
-    DialogTitle,
-  } from "@headlessui/react";
-  import { Fragment, useState } from "react";
+  Dialog,
+  Transition,
+  TransitionChild,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
+import { Fragment, useState } from "react";
 import UseAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import { TbListDetails } from "react-icons/tb";
@@ -15,10 +15,9 @@ import { MdCancel, MdDelete, MdFeedback } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-
 const AllAppliedScholarship = () => {
   const axiosPublic = UseAxiosPublic();
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const [editScholarship, setEditScholarship] = useState({});
 
@@ -31,13 +30,6 @@ const AllAppliedScholarship = () => {
     },
   });
 
-  const editApplication = (status, id) => {
-    console.log(status, id);
-    // if (status === "processing")
-    //   return toast.error("Cannot edit application is processing");
-    // navigate(`edit-Application/${id}`);
-  };
-
   const deleteApplication = async (id) => {
     console.log(id);
     const { data } = await axiosPublic.delete(`/applied-scholarship/${id}`);
@@ -49,34 +41,35 @@ const AllAppliedScholarship = () => {
   };
 
   const openModal = (scholarship) => {
-    reset()
+    reset();
     setIsOpen(true);
     console.log(scholarship);
-    setEditScholarship(scholarship)
+    setEditScholarship(scholarship);
   };
 
   const closeModal = () => {
-    setIsOpen(false)
+    setIsOpen(false);
     console.log("close");
-    
   };
 
   const onSubmit = async (data) => {
     console.log(data);
-    try{
-        const res = await axiosPublic.patch(`/applied-scholarships/${editScholarship?._id}`, data);
-        console.log(res.data);
-        if(res.data.modifiedCount > 0){
-            toast.success("Application edited successfully")
-            closeModal();
-        }else{
-            toast.error("Data is up to date")
-        }
-    }catch(error){
-        toast(error.message);
+    try {
+      const res = await axiosPublic.patch(
+        `/applied-scholarships/${editScholarship?._id}`,
+        data
+      );
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        toast.success("Application edited successfully");
+        closeModal();
+      } else {
+        toast.error("Data is up to date");
+      }
+    } catch (error) {
+      toast(error.message);
     }
-
-  }
+  };
 
   return (
     <>
@@ -150,7 +143,7 @@ const AllAppliedScholarship = () => {
         </div>
       </div>
 
-{/* modal  */}
+      {/* modal  */}
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <TransitionChild
