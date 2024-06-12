@@ -9,6 +9,7 @@ import { ImProfile } from "react-icons/im";
 import { FaFileAlt } from "react-icons/fa";
 import { MdRateReview } from "react-icons/md";
 import useUser from "../../hooks/useUser";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -44,7 +45,9 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div
+      {
+        isLoading ? <ScaleLoader height={30} width={3} color="#F2A227" /> :
+        <div
         className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-navy w-72 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
@@ -287,6 +290,7 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
+      }
     </>
   );
 };

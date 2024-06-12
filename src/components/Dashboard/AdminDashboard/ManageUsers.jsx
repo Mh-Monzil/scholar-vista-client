@@ -4,14 +4,18 @@ import UseAxiosPublic from "../../../hooks/useAxiosPublic";
 import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
 import UseAuth from "../../../hooks/useAuth";
+import { useState } from "react";
 
 const ManageUsers = () => {
   const { user } = UseAuth();
   const axiosPublic = UseAxiosPublic();
-  const { data: users = [], refetch } = useQuery({
+  const [users, setUsers] = useState([])
+
+  const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/users`);
+      setUsers(data);
       return data;
     },
   });
@@ -44,11 +48,35 @@ const ManageUsers = () => {
     }
   };
 
+  const handleSort = async (role) => {
+    console.log(role);
+    try{
+      const { data } = await axiosPublic.get(`/sort-users/${role}`);
+      setUsers(data)
+      console.log(data);
+    }catch(error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
       <h2 className="text-2xl md:text-3xl font-bold underline">
         My Application
       </h2>
+      <div>
+        <select
+          onChange={(e) => {
+            handleSort(e.target.value);
+          }}
+          className="block w-40 ml-auto px-6 py-3 text-base font-semibold tracking-wide  capitalize transition-colors duration-300 transform bg-yellow/90 rounded-sm hover:bg-navy hover:text-white focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 cursor-pointer"
+        >
+          <option>Sort</option>
+          <option value="user">user</option>
+          <option value="moderator">moderator</option>
+          <option value="admin">admin</option>
+        </select>
+      </div>
       <div className="overflow-x-auto mt-6 shadow-md">
         <table className="table">
           {/* head */}

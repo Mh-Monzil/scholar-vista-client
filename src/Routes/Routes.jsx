@@ -19,6 +19,7 @@ import AllAppliedScholarship from "../components/Dashboard/ModeratorDashboard/Al
 import AddScholarship from "../components/Dashboard/ModeratorDashboard/AddScholarship";
 import ManageUsers from "../components/Dashboard/AdminDashboard/ManageUsers";
 import AdminRoute from "./AdminRoute";
+import CommonRoute from "./CommonRoute";
 
 export const router = createBrowserRouter([
   {
@@ -52,15 +53,20 @@ export const router = createBrowserRouter([
         // loader: ({params}) => fetch(`/scholarship-details/${params.id}`)
       },
       {
-        path: '/application-form/:id',
-        element: <ApplicationForm />,
-        loader: ({params}) => fetch(`http://localhost:5000/scholarship-details/${params.id}`)
+        path: "/application-form/:id",
+        element: (
+          <PrivateRoute>
+            <ApplicationForm />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/scholarship-details/${params.id}`),
       },
     ],
   },
 
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <Dashboard />
@@ -69,44 +75,73 @@ export const router = createBrowserRouter([
     children: [
       //user routes
       {
-        path: 'my-profile',
-        element: <MyProfile />
+        path: "my-profile",
+        element: <MyProfile />,
       },
       {
-        path: 'my-application',
-        element: <MyApplication />
+        path: "my-application",
+        element: <MyApplication />,
       },
       {
-        path: 'my-reviews',
-        element: <MyReviews />
+        path: "my-reviews",
+        element: <MyReviews />,
       },
       {
-        path: 'my-application/edit-application/:id',
+        path: "my-application/edit-application/:id",
         element: <EditApplicationForm />,
-        loader: ({params}) => fetch(`http://localhost:5000/applied-scholarships/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/applied-scholarships/${params.id}`),
       },
       {
-        path: 'manage-scholarships',
-        element: <ManageScholarship />
+        path: "manage-scholarships",
+        element: (
+          <PrivateRoute>
+            <CommonRoute>
+              <ManageScholarship />
+            </CommonRoute>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'all-reviews',
-        element: <AllReviews />
+        path: "all-reviews",
+        element: (
+          <PrivateRoute>
+            <CommonRoute>
+              <AllReviews />
+            </CommonRoute>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'all-applied-scholarship',
-        element: <AllAppliedScholarship />
+        path: "all-applied-scholarship",
+        element: (
+          <PrivateRoute>
+            <CommonRoute>
+              <AllAppliedScholarship />
+            </CommonRoute>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'add-scholarship',
-        element: <AddScholarship />
+        path: "add-scholarship",
+        element: (
+          <PrivateRoute>
+            <CommonRoute>
+              <AddScholarship />
+            </CommonRoute>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'manage-users',
-        element: <AdminRoute>
-          <ManageUsers />
-        </AdminRoute>
+        path: "manage-users",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
-    ]
+    ],
   },
 ]);

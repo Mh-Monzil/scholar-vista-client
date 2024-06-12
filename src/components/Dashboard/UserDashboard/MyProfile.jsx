@@ -10,7 +10,7 @@ const MyProfile = () => {
   const [role, isLoading] = useUser();
 
   console.log(user)
-  if (loading) return <ScaleLoader height={30} width={3} color="#F2A227" />
+  if (loading) return <ScaleLoader className="h-screen flex items-center justify-center" height={30} width={3} color="#F2A227" />
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='bg-white shadow-lg rounded-2xl w-3/5'>

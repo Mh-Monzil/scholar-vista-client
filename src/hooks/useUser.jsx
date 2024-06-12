@@ -5,11 +5,12 @@ import UseAuth from './useAuth';
 import { useEffect, useState } from 'react';
 
 const useUser = () => {
-    const {user} = UseAuth();
+    const {user, loading} = UseAuth();
     const axiosPublic = UseAxiosPublic();
 
-    const {data: role = {}, isLoading} = useQuery({
+    const {data: role = '', isLoading} = useQuery({
       queryKey: ['role', user?.email],
+      enabled: !loading && !!user?.email,
       queryFn: async () => {
         const { data } = await axiosPublic.get(`/users-role/${user?.email}`);
         console.log(data.role);
