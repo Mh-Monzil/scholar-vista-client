@@ -27,7 +27,7 @@ const MyReviews = () => {
   const { data: reviews = [], refetch } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/my-reviews/${user?.email}`);
+      const { data } = await axiosSecure.get(`/my-reviews/${user?.email}`);
       console.log(data);
       return data;
     },

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
-import logo from './logo-yellow.png'
+import logo from '/logo-yellow.png'
 
 const Footer = () => {
     return (
-      <footer className='bg-white shadow-sm mt-12'>
+      <footer className='bg-navy text-white shadow-sm mt-12'>
         <hr />
         <div className='container px-6 py-8 mx-auto'>
           <div className='flex flex-col items-center text-center'>
@@ -17,7 +17,7 @@ const Footer = () => {
             <div className='flex flex-wrap justify-center mt-6 -mx-4'>
               <a
                 href='#'
-                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                className='mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 '
                 aria-label='Reddit'
               >
                 {' '}
@@ -26,16 +26,16 @@ const Footer = () => {
   
               <a
                 href='#'
-                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                className='mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 '
                 aria-label='Reddit'
               >
                 {' '}
-                Queries{' '}
+                Scholarships{' '}
               </a>
   
               <a
                 href='#'
-                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                className='mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 '
                 aria-label='Reddit'
               >
                 {' '}
@@ -47,14 +47,14 @@ const Footer = () => {
           <hr className='my-6 border-gray-200 md:my-10 ' />
   
           <div className='flex flex-col items-center sm:flex-row sm:justify-between'>
-            <p className='text-sm text-gray-500 '>
+            <p className='text-sm py-2'>
               © Copyright 2024. All Rights Reserved.
             </p>
   
             <div className='flex -mx-2'>
               <a
                 href='#'
-                className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                className='mx-2  transition-colors duration-300 hover:text-blue-500 '
                 aria-label='Reddit'
               >
                 <svg
@@ -69,7 +69,7 @@ const Footer = () => {
   
               <a
                 href='#'
-                className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                className='mx-2  transition-colors duration-300 hover:text-blue-500 '
                 aria-label='Facebook'
               >
                 <svg
@@ -84,7 +84,7 @@ const Footer = () => {
   
               <a
                 href='#'
-                className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                className='mx-2  transition-colors duration-300 hover:text-blue-500 '
                 aria-label='Github'
               >
                 <svg
