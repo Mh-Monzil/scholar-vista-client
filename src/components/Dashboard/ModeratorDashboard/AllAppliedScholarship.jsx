@@ -14,9 +14,11 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdCancel, MdDelete, MdFeedback } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllAppliedScholarship = () => {
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const [editScholarship, setEditScholarship] = useState({});
@@ -24,7 +26,7 @@ const AllAppliedScholarship = () => {
   const { data: allAppliedScholarships = [], refetch } = useQuery({
     queryKey: ["allAppliedScholarships"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get("/applied-scholarships");
+      const { data } = await axiosSecure.get("/applied-scholarships");
       console.log(data);
       return data;
     },
@@ -32,7 +34,7 @@ const AllAppliedScholarship = () => {
 
   const deleteApplication = async (id) => {
     console.log(id);
-    const { data } = await axiosPublic.delete(`/applied-scholarship/${id}`);
+    const { data } = await axiosSecure.delete(`/applied-scholarship/${id}`);
     console.log(data);
     if (data.deletedCount > 0) {
       refetch();
@@ -55,7 +57,7 @@ const AllAppliedScholarship = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const res = await axiosPublic.patch(
+      const res = await axiosSecure.patch(
         `/applied-scholarships/${editScholarship?._id}`,
         data
       );
@@ -75,7 +77,7 @@ const AllAppliedScholarship = () => {
     <>
       <div>
         <h2 className="text-2xl md:text-3xl font-bold underline">
-          My Application
+          All Applied Application
         </h2>
         <div className="overflow-x-auto mt-6 shadow-md">
           <table className="table">

@@ -2,14 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../../hooks/useAxiosPublic";
 import ReviewCard from "../ReviewCard/ReviewCard";
 import {toast} from 'react-hot-toast'
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllReviews = () => {
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: reviews = [], refetch } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/reviews`);
+      const { data } = await axiosSecure.get(`/reviews`);
       //   console.log(reviews);
       return data;
     },
@@ -19,7 +21,7 @@ const AllReviews = () => {
   const deleteReview = async (id) => {
     try{
       console.log("delete", id);
-      const {data} = await axiosPublic.delete(`/delete-reviews/${id}`)
+      const {data} = await axiosSecure.delete(`/delete-reviews/${id}`)
       console.log(data);
       if(data.deletedCount > 0){
         toast.success("Review deleted successfully")

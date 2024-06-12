@@ -14,9 +14,11 @@ import {
 } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageScholarship = () => {
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [scholarship, setScholarship] = useState({});
   const { register, handleSubmit, reset } = useForm();
@@ -42,7 +44,7 @@ const ManageScholarship = () => {
 
   const deleteApplication = async (id) => {
     console.log(id, "delete");
-    const {data} = await axiosPublic.delete(`/scholarship/${id}`);
+    const {data} = await axiosSecure.delete(`/scholarship/${id}`);
     console.log(data);
     if(data.deletedCount > 0){
       toast.success("Scholarships deleted successfully")
@@ -53,7 +55,7 @@ const ManageScholarship = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const res = await axiosPublic.patch(
+      const res = await axiosSecure.patch(
         `/update-scholarships/${scholarship?._id}`,
         data
       );

@@ -13,11 +13,13 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import UseAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const MyReviews = () => {
   const {user} = UseAuth();
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [editReview, setEditReview] = useState({});
   const { register, handleSubmit, reset } = useForm();
@@ -25,7 +27,7 @@ const MyReviews = () => {
   const { data: reviews = [], refetch } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
-      const { data } = await axiosPublic(`/my-reviews/${user?.email}`);
+      const { data } = await axiosSecure(`/my-reviews/${user?.email}`);
       console.log(data);
       return data;
     },
@@ -45,7 +47,7 @@ const MyReviews = () => {
 
   const deleteReview = async (id) => {
     console.log(id);
-    const { data } = await axiosPublic.delete(`/delete-reviews/${id}`)
+    const { data } = await axiosSecure.delete(`/delete-reviews/${id}`)
     console.log(data);
     if(data.deletedCount > 0) {
       toast.success("Review deleted successfully")
@@ -62,7 +64,7 @@ const MyReviews = () => {
         reviewerComment: comments,
       };
       console.log(reviewInfo);
-      const { data } = await axiosPublic.patch(`/update-reviews/${editReview?._id}`, reviewInfo);
+      const { data } = await axiosSecure.patch(`/update-reviews/${editReview?._id}`, reviewInfo);
       console.log(data);
       if(data.modifiedCount > 0) {
         closeModal();

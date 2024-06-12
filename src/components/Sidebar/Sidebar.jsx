@@ -45,8 +45,7 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      {
-        isLoading ? <ScaleLoader height={30} width={3} color="#F2A227" /> :
+      
         <div
         className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-navy w-72 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
@@ -290,7 +289,6 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-      }
     </>
   );
 };

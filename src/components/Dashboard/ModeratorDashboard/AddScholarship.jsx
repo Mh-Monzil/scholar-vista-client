@@ -2,14 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import UseAxiosPublic from "../../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddScholarship = () => {
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
     try{
-      const res = await axiosPublic.post('/scholarships', data);
+      const res = await axiosSecure.post('/scholarships', data);
       console.log(res.data);
       if(res.data.insertedId){
         toast.success("Scholarship added successfully")

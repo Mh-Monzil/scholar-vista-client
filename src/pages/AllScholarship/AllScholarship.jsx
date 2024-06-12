@@ -4,9 +4,11 @@ import Card from "../../components/Card/Card";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import YellowButton from "../../components/Shared/YellowButton";
 import { useState } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllScholarship = () => {
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [notFound, setNotFound] = useState('');
   const [scholarships, setScholarships] = useState([]);
 
@@ -25,7 +27,7 @@ const AllScholarship = () => {
     console.log(searchValue);
 
     try{
-      const { data } = await axiosPublic.get(`/scholarship-search/${searchValue}`)
+      const { data } = await axiosSecure.get(`/scholarship-search/${searchValue}`)
       console.log(data);
       if(typeof data === "string"){
         setNotFound("Nor Scholarship Available");

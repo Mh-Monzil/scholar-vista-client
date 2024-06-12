@@ -9,16 +9,18 @@ import { useForm } from "react-hook-form";
 import UseAuth from "../../hooks/useAuth";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ReviewModal = ({ isOpen, openModal, closeModal,reviewScholarship }) => {
   const { user } = UseAuth();
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
     const { rating, comments, date } = data;
     const {scholarship_id, universityName, scholarshipName  } = reviewScholarship;
-    console.log(scholarshipName);
+    
     try {
       const reviewInfo = {
         scholarshipName,
@@ -31,9 +33,9 @@ const ReviewModal = ({ isOpen, openModal, closeModal,reviewScholarship }) => {
         ratingPoint: parseInt(rating),
         reviewerComment: comments,
       };
-      console.log(reviewInfo);
-      const { data } = await axiosPublic.post("/reviews", reviewInfo);
-      console.log(data);
+      
+      const { data } = await axiosSecure.post("/reviews", reviewInfo);
+      
       if(data.insertedId){
         closeModal();
         toast.success("Review added successfully");

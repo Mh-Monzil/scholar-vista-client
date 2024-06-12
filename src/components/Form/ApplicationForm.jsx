@@ -4,11 +4,13 @@ import { imageUpload } from "../../api/utils/image";
 import UseAuth from "../../hooks/useAuth";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ApplicationForm = () => {
     const {user} = UseAuth();
     const navigate = useNavigate();
     const axiosPublic = UseAxiosPublic();
+    const axiosSecure = useAxiosSecure();
   const { register, handleSubmit,reset } = useForm();
   const scholarship = useLoaderData();
   console.log(scholarship);
@@ -16,7 +18,6 @@ const ApplicationForm = () => {
   const {_id, universityName, scholarshipCategory, subjectCategory, applicationFees, serviceCharge, universityLocation, scholarshipName } = scholarship;
 
   const onSubmit = async (data) => {
-    console.log(data);
 
     try {
       const {
@@ -55,9 +56,8 @@ const ApplicationForm = () => {
         appliedDate: new Date().toLocaleDateString()
       };
 
-      console.log(appliedInfo);
-      const res = await axiosPublic.post('/applied-scholarships', appliedInfo)
-      console.log(res.data);
+      const res = await axiosSecure.post('/applied-scholarships', appliedInfo)
+      
       if(res.data.insertedId){
         toast.success("Applied Successfully");
         // reset();

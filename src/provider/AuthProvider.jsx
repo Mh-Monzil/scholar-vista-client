@@ -57,6 +57,7 @@ const AuthProvider = ({ children }) => {
       { email },
       { withCredentials: true }
     );
+    console.log(data);
     return data;
   };
 
@@ -82,7 +83,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
       if (currentUser) {
-        getToken(currentUser.email);
+        getToken(currentUser?.email);
         saveUser(currentUser);
         }
       setLoading(false);

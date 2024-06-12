@@ -56,7 +56,6 @@ const Login = () => {
         setLoading(false);
         
       }catch(error){
-        // const {data} = await axiosPublic.post('/user-validation',loggedUser);
         toast.error(error.message);
         console.log(error);
         setLoading(false);

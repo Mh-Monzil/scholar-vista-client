@@ -3,11 +3,13 @@ import { useLoaderData, useParams } from "react-router-dom";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { imageUpload } from "../../api/utils/image";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const EditApplicationForm = () => {
   const application = useLoaderData();
   const {id} = useParams();
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
 
 console.log(id);
@@ -59,7 +61,7 @@ console.log(id);
           subjectCategory
         };
         
-        const res = await axiosPublic.patch(`/applied-scholarships/${id}`, editedInfo);
+        const res = await axiosSecure.patch(`/applied-scholarships/${id}`, editedInfo);
         console.log(res.data);
         if(res.data.modifiedCount > 0){
             toast.success("Application edited successfully")

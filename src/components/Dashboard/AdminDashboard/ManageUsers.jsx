@@ -5,16 +5,19 @@ import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
 import UseAuth from "../../../hooks/useAuth";
 import { useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-  const { user } = UseAuth();
+  const { user,loading } = UseAuth();
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [users, setUsers] = useState([])
 
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["users"],
+    enabled: !!user?.email && !loading,
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/users`);
+      const { data } = await axiosSecure.get(`/users`);
       setUsers(data);
       return data;
     },
@@ -23,7 +26,7 @@ const ManageUsers = () => {
   const handleRoleChange = async (role, email) => {
     if (user?.email === "monzil246@gmail.com") {
       console.log(role, email);
-      const { data } = await axiosPublic.patch(`/users/${email}`, { role });
+      const { data } = await axiosSecure.patch(`/users/${email}`, { role });
       console.log(data);
       if (data.modifiedCount > 0) {
         toast.success("Role changed");
@@ -39,7 +42,7 @@ const ManageUsers = () => {
     if (email === "monzil246@gmail.com") {
       toast.error("Cannot Delete Yourself");
     } else {
-      const { data } = await axiosPublic.delete(`/users/${email}`);
+      const { data } = await axiosSecure.delete(`/users/${email}`);
       console.log(data);
       if (data.deletedCount > 0) {
         toast.success("User Deleted Successfully");
@@ -51,7 +54,7 @@ const ManageUsers = () => {
   const handleSort = async (role) => {
     console.log(role);
     try{
-      const { data } = await axiosPublic.get(`/sort-users/${role}`);
+      const { data } = await axiosSecure.get(`/sort-users/${role}`);
       setUsers(data)
       console.log(data);
     }catch(error) {
@@ -62,7 +65,7 @@ const ManageUsers = () => {
   return (
     <div>
       <h2 className="text-2xl md:text-3xl font-bold underline">
-        My Application
+        All Users
       </h2>
       <div>
         <select

@@ -18,19 +18,20 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import ApplicantsReview from "../../components/ApplicantsReview/ApplicantsReview";
 import ApplyModal from "../../components/Modal/ApplyModal";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 //modal
 
 const ScholarshipDetails = () => {
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   let [isOpen, setIsOpen] = useState(false);
 
   const { data: scholarship = {}, isLoading } = useQuery({
     queryKey: ["scholarships-details", id],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/scholarship-details/${id}`);
-      console.log(data);
+      const { data } = await axiosSecure.get(`/scholarship-details/${id}`);
       return data;
     },
   });
@@ -41,7 +42,7 @@ const ScholarshipDetails = () => {
     enabled: !isLoading,
     queryKey: ["reviews" ],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/reviews/${scholarship?._id}`);
+      const { data } = await axiosSecure.get(`/reviews/${scholarship?._id}`);
       console.log(reviews);
       return data;
     },
@@ -55,7 +56,7 @@ const ScholarshipDetails = () => {
     setIsOpen(false);
   };
 
-  const totalReview = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+  // const totalReview = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
   
 
@@ -157,9 +158,9 @@ const ScholarshipDetails = () => {
           }}
           className="mySwiper w-full"
         >
-          {totalReview.map((review) => (
-            <SwiperSlide key={review.id}>
-              <ApplicantsReview />
+          {reviews.map((review) => (
+            <SwiperSlide key={review._id}>
+              <ApplicantsReview review={review} />
             </SwiperSlide>
           ))}
         </Swiper>

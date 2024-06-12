@@ -5,10 +5,12 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import ReviewModal from "../../Modal/ReviewModal";
 import UseAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyApplication = () => {
   const {user} = UseAuth();
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   let [isOpen, setIsOpen] = useState(false);
   const [reviewScholarship, setReviewScholarship] = useState({});
@@ -16,7 +18,7 @@ const MyApplication = () => {
   const { data: appliedScholarship = [], refetch } = useQuery({
     queryKey: ["appliedScholarship"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/my-applied-scholarships/${user?.email}`);
+      const { data } = await axiosSecure.get(`/my-applied-scholarships/${user?.email}`);
       
       return data;
     },
@@ -30,7 +32,7 @@ const MyApplication = () => {
   };
 
   const deleteApplication = async (id) => {
-    const { data } = await axiosPublic.delete(`/applied-scholarship/${id}`);
+    const { data } = await axiosSecure.delete(`/my-applied-scholarship/${id}`);
     console.log(data);
     if (data.deletedCount > 0) {
       refetch();
