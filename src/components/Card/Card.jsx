@@ -18,7 +18,7 @@ const Card = ({ scholar }) => {
 
   const ratingStar = {
     size: 25,
-    value: 1,
+    value: rating,
     edit: false,
     activeColor: "#F2A227",
   };
@@ -49,7 +49,8 @@ const Card = ({ scholar }) => {
         </p>
         <div className="flex items-center justify-between py-2">
           <p className="text-3xl font-semibold text-navy">${applicationFees}</p>
-          <span>
+          <span className="flex items-center font-medium gap-2">
+            {rating}
             <ReactStars {...ratingStar} />
           </span>
         </div>

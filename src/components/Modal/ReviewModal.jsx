@@ -11,7 +11,7 @@ import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const ReviewModal = ({ isOpen, openModal, closeModal,reviewScholarship }) => {
+const ReviewModal = ({ isOpen, openModal, closeModal, reviewScholarship }) => {
   const { user } = UseAuth();
   const axiosPublic = UseAxiosPublic();
   const axiosSecure = useAxiosSecure();
@@ -19,8 +19,9 @@ const ReviewModal = ({ isOpen, openModal, closeModal,reviewScholarship }) => {
 
   const onSubmit = async (data) => {
     const { rating, comments, date } = data;
-    const {scholarship_id, universityName, scholarshipName  } = reviewScholarship;
-    
+    const { scholarship_id, universityName, scholarshipName } =
+      reviewScholarship;
+
     try {
       const reviewInfo = {
         scholarshipName,
@@ -33,10 +34,21 @@ const ReviewModal = ({ isOpen, openModal, closeModal,reviewScholarship }) => {
         ratingPoint: parseInt(rating),
         reviewerComment: comments,
       };
-      
+
       const { data } = await axiosSecure.post("/reviews", reviewInfo);
+      const res = await axiosSecure.get(`/reviews/${scholarship_id}`);
+      const allReviews = res.data;
+
+      let totalRating = 0;
+      const reviewRating = allReviews.map(
+        (rating) => (totalRating += rating.ratingPoint)
+      );
+      const avgRating = totalRating / allReviews.length;
       
-      if(data.insertedId){
+      const res2 = await axiosSecure.patch(`/update-scholarships/${scholarship_id}`, {rating: avgRating})
+      console.log(res2.data, "rating updated");
+
+      if (data.insertedId) {
         closeModal();
         toast.success("Review added successfully");
         reset();
