@@ -12,7 +12,7 @@ const AllScholarship = () => {
   const [notFound, setNotFound] = useState('');
   const [scholarships, setScholarships] = useState([]);
 
-  const { data = [], isLoading } = useQuery({
+  const { data : scholar = [], isLoading } = useQuery({
     queryKey: ["scholarships"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/scholarships");

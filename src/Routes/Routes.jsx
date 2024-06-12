@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/scholarship-details/${params.id}`),
+          fetch(`https://scholarvista-server.vercel.app/scholarship-details/${params.id}`),
       },
     ],
   },
@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
         path: "my-application/edit-application/:id",
         element: <EditApplicationForm />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/applied-scholarships/${params.id}`),
+          fetch(`https://scholarvista-server.vercel.app/applied-scholarships/${params.id}`),
       },
       {
         path: "manage-scholarships",
