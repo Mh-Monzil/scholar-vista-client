@@ -30,7 +30,7 @@ const TopScholarship = () => {
           <Card key={scholar._id} scholar={scholar} />
         ))}
       </div>
-      <div className="w-64 ml-auto my-12">
+      <div className="w-64 mx-auto md:mx-0 md:ml-auto my-12">
         <Link to="/all-scholarship">
         <NavyButton  label={"See All Scholarship"} />
         </Link>
