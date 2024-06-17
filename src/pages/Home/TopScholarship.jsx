@@ -18,7 +18,7 @@ const TopScholarship = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto mt-12 lg:mt-24">
+    <div className="max-w-7xl mx-auto mt-12 lg:mt-24 p-4">
       <SectionTitle
         title={"Top Scholarship"}
         description={

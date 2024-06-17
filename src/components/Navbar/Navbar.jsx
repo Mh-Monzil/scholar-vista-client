@@ -94,14 +94,14 @@ const Navbar = () => {
         <ul
           className={`${
             menu
-              ? "absolute md:hidden top-24 left-4 p-4 pr-20 sm:pr-40 space-y-2 duration-700 ease-in-out shadow-md rounded-md z-50 bg-white"
-              : "hidden"
+              ? "absolute md:hidden top-16 -left-4 px-4 py-8 pr-16 sm:pr-40 space-y-3 duration-300 transition-all ease-in-out shadow-md rounded-md z-50 bg-navy text-white"
+              : "absolute md:hidden -left-80 top-16 space-y-3 transition-all duration-500 text-navy bg-white"
           } `}
         >
           {routes.map((route) => (
             <li key={route.id}>
               <Link
-                className="font-semibold text-lg hover:text-rose-600 ease-in-out duration-300 cursor-pointer active:border-b-2"
+                className="font-semibold text-lg hover:text-yellow ease-in-out duration-300 cursor-pointer active:border-b-2 p-4"
                 to={`${route.path}`}
               >
                 {route.name}
@@ -110,6 +110,7 @@ const Navbar = () => {
           ))}
         </ul>
 
+{/* profile  */}
         <div className="flex items-center gap-8">
           {loading ? (
             <ScaleLoader height={30} width={3} color="#F2A227" />

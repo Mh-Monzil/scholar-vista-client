@@ -6,7 +6,7 @@ const Root = () => {
   return (
     <div className="font-poppins">
       <Navbar />
-      <div className="container px-4 sm:px-0 2xl:max-w-[1920px] mx-auto">
+      <div className="container sm:px-0 2xl:max-w-[1920px] mx-auto">
       <Outlet />
       </div>
       <Footer />

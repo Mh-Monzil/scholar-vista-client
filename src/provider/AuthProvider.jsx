@@ -37,8 +37,6 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true);
-    const { data } = await axiosPublic("/logout");
-    console.log(data);
     return signOut(auth);
   };
 
@@ -51,15 +49,22 @@ const AuthProvider = ({ children }) => {
   };
 
   // Get token from server
-  const getToken = async (email) => {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/jwt`,
-      { email },
-      { withCredentials: true }
-    );
-    console.log(data);
-    return data;
-  };
+  // const getToken = async (email) => {
+  //   const { data } = await axiosPublic.post(
+  //     `/jwt`,
+  //     { email },
+  //     { withCredentials: true }
+  //   );
+  //   console.log(data.token, "client bolchi");
+  //   if (data.token) {
+  //     localStorage.setItem("access-token", data.token);
+  //     setLoading(false);
+  //   } else {
+  //     // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
+  //     localStorage.removeItem("access-token");
+  //     setLoading(false);
+  //   }
+  // };
 
   const saveUser = async (user) => {
     const currentUser = {
@@ -81,12 +86,24 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
+      saveUser(currentUser);
       if (currentUser) {
-        getToken(currentUser?.email);
-        saveUser(currentUser);
-        }
-      setLoading(false);
+        
+        // get token and store client
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", userInfo)
+        .then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+            
+            setLoading(false);
+          }
+        });
+      } else {
+        // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
     return () => {
       return unsubscribe();

@@ -51,6 +51,7 @@ const StudentsReview = () => {
                         slideShadows: true,
                       }}
                       pagination={true}
+                      autoplay={true}
                       loop={true}
                       modules={[EffectCoverflow, Pagination]}
                       breakpoints={{
