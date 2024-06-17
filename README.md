@@ -2,6 +2,15 @@
 
 **Live Site URL:** [Visit ScholarVista](https://my-project-2f30d.web.app/)
 
+## Explore Admin and Moderator Dashboard
+
+- **Admin Email:** monzil246@gmail.com
+- **Admin Password:** 123456aA
+- **Moderator Email:** mhmonzil@gmail.com
+- **Moderator Password:** 123456aA
+
+
+
 ## Key Features
 
 - **Banner Slider:** Highlights featured scholarships and important announcements on the homepage.
@@ -15,7 +24,5 @@
 - **Application Feedback:** Moderators and admins can provide feedback on applications, which can be valuable for students looking to improve their chances.
 - **Integrated Payment System:** The integration with Stripe ensures secure and efficient handling of payments, making the application process seamless.
 
-## Selected Category
 
-**category_0021**
 
