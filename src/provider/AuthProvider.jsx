@@ -48,23 +48,6 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  // Get token from server
-  // const getToken = async (email) => {
-  //   const { data } = await axiosPublic.post(
-  //     `/jwt`,
-  //     { email },
-  //     { withCredentials: true }
-  //   );
-  //   console.log(data.token, "client bolchi");
-  //   if (data.token) {
-  //     localStorage.setItem("access-token", data.token);
-  //     setLoading(false);
-  //   } else {
-  //     // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
-  //     localStorage.removeItem("access-token");
-  //     setLoading(false);
-  //   }
-  // };
 
   const saveUser = async (user) => {
     const currentUser = {
@@ -79,6 +62,7 @@ const AuthProvider = ({ children }) => {
       currentUser
     );
     console.log(data);
+    setLoading(false);
     return data;
   };
 
@@ -108,7 +92,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unsubscribe();
     };
-  }, []);
+  }, [axiosPublic]);
 
   const authInfo = {
     user,

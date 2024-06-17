@@ -43,11 +43,11 @@ const Navbar = () => {
     {
       id: 3,
       name:
-        role === "user"
-          ? "User Dashboard"
+        role === "moderator"
+          ? "Moderator Dashboard"
           : role === "admin"
           ? "Admin Dashboard"
-          : "Moderator Dashboard",
+          : "User Dashboard",
       path: 'dashboard/my-profile',
     },
   ];
