@@ -1,6 +1,6 @@
 const ApplicantsReview = ({review}) => {
   return (
-    <div className="container flex flex-col w-full p-6 mx-auto divide-y rounded-md divide-gray-300 bg-gray-50 text-gray-800">
+    <div className="container flex flex-col w-full p-6 h-80 mx-auto divide-y rounded-md divide-gray-300 bg-gray-50 text-gray-800">
       <div className="flex justify-between p-4">
         <div className="flex space-x-4">
           <div>
@@ -27,7 +27,7 @@ const ApplicantsReview = ({review}) => {
         </div>
       </div>
       <div className="p-4 space-y-2 text-sm text-gray-600">
-        <p className="pb-6">
+        <p className="pb-6 text-navy text-lg">
           {review?.reviewerComment}
         </p>
       </div>

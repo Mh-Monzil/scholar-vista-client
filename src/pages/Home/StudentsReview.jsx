@@ -23,17 +23,21 @@ const StudentsReview = () => {
         queryFn: async () => {
             const {data} = await axiosPublic.get("reviews");
             console.log(data);
-            return data;
+            return data.slice(0,8);
         }
     })
     console.log(studentsReviews);
 
     return (
-        <div className="max-w-7xl mx-auto mt-12 lg:mt-24">
-           <SectionTitle title={"Students Review"} />
+        <div style={{
+          backgroundImage: ` url('https://i.ibb.co/chZhDYM/design11-01-generated.jpg')`,
+        }} className="bg-red-400 py-2 px-4 sm:p-4 bg-fixed bg-bottom bg-cover rounded-md">
+          <div className="max-w-7xl mx-auto mt-12 lg:mt-24">
+           <h2 className="text-white text-4xl md:text-5xl font-bold md:w-[600px] mx-auto text-center leading-10 md:leading-[70px]">Students Reviews</h2>
+           <p className="text-white text-lg font-semibold md:max-w-[800px] mx-auto text-center py-4">Hear from past recipients about their scholarship experiences. Learn how various scholarships have helped students achieve their academic and career goals through their own words and stories.</p>
             <div>
                 {
-                    <div className="my-14">
+                    <div className="my-10">
                     <Swiper
                       effect={"coverflow"}
                       grabCursor={true}
@@ -66,6 +70,7 @@ const StudentsReview = () => {
                   </div>
                 }
             </div>
+        </div>
         </div>
     );
 };
